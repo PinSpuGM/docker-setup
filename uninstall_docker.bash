@@ -8,7 +8,7 @@ sudo systemctl stop docker docker.socket containerd 2>/dev/null
 sudo systemctl disable docker docker.socket containerd 2>/dev/null
 
 # Remove Docker packages (all components installed by install_docker.bash)
-sudo apt purge -y \
+sudo apt-get purge -y \
   docker-ce \
   docker-ce-cli \
   containerd.io \
@@ -21,7 +21,7 @@ sudo apt purge -y \
   runc \
   2>/dev/null
 
-sudo apt autoremove -y --purge
+sudo apt-get autoremove -y --purge
 
 # Remove Docker data: images, containers, volumes, networks
 sudo rm -rf /var/lib/docker
@@ -46,6 +46,6 @@ if getent group docker > /dev/null 2>&1; then
 fi
 
 # Refresh APT package index
-sudo apt update
+sudo apt-get update
 
 echo "Docker and all related data have been completely removed."

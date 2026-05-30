@@ -4,11 +4,11 @@
 # Written by Pin
 
 # Remove any previously installed Docker versions
-sudo apt remove -y docker docker-engine docker.io containerd runc 2>/dev/null
+sudo apt-get remove -y docker docker-engine docker.io containerd runc 2>/dev/null
 
 # Install required dependencies
-sudo apt update
-sudo apt install -y ca-certificates curl gnupg lsb-release
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg lsb-release
 
 # Add Docker's official GPG key
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -24,8 +24,8 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Install Docker Engine
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Start the Docker service and enable it to start automatically on boot
 sudo systemctl start docker
