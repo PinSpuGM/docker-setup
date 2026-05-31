@@ -1,6 +1,6 @@
 # Docker Setup Scripts for Google Cloud Compute Instances
 
-Simple bash scripts to install and completely uninstall Docker on Ubuntu-based Google Cloud Compute instances.
+Simple bash scripts to install and completely uninstall Docker on Debian-based Google Cloud Compute instances.
 
 ---
 
@@ -15,7 +15,7 @@ Simple bash scripts to install and completely uninstall Docker on Ubuntu-based G
 
 ## Requirements
 
-- Ubuntu-based Google Cloud Compute instance
+- Debian-based Google Cloud Compute instance (Debian 12 Bookworm or later)
 - `sudo` privileges
 
 ---
@@ -23,6 +23,16 @@ Simple bash scripts to install and completely uninstall Docker on Ubuntu-based G
 ## Usage
 
 ### Install Docker
+
+Download the script:
+
+```bash
+curl -fsSLO https://raw.githubusercontent.com/PinSpuGM/docker-setup/main/install_docker.bash
+# or
+wget https://raw.githubusercontent.com/PinSpuGM/docker-setup/main/install_docker.bash
+```
+
+Run it:
 
 ```bash
 bash install_docker.bash
@@ -32,7 +42,17 @@ After the script finishes, **log out and log back in** for the group permission 
 
 ### Uninstall Docker
 
+Download the script:
+
+```bash
+curl -fsSLO https://raw.githubusercontent.com/PinSpuGM/docker-setup/main/uninstall_docker.bash
+# or
+wget https://raw.githubusercontent.com/PinSpuGM/docker-setup/main/uninstall_docker.bash
+```
+
 > **Warning:** This will permanently delete all Docker images, containers, and volumes on the machine. This action cannot be undone.
+
+Run it:
 
 ```bash
 bash uninstall_docker.bash
