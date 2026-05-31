@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Completely uninstall Docker and remove all related data on gcloud compute instances
+# Completely uninstall Docker and remove all related data on Debian-based gcloud compute instances
 # Written by Pin
+#
+# Download this script:
+#   curl -fsSLO https://raw.githubusercontent.com/PinSpuGM/docker-setup/main/uninstall_docker.bash
+#   wget https://raw.githubusercontent.com/PinSpuGM/docker-setup/main/uninstall_docker.bash
 
 # Stop and disable Docker services
 sudo systemctl stop docker docker.socket containerd 2>/dev/null
