@@ -35,5 +35,19 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 sudo systemctl start docker
 sudo systemctl enable docker
 
+# Add current user to the docker group to avoid "permission denied" errors
+if getent group docker &>/dev/null; then
+  if ! id -nG "$USER" | grep -qw docker; then
+    sudo gpasswd -a "$USER" docker
+  fi
+fi
+
+# Fix docker socket ownership and permissions
+SOCK="/var/run/docker.sock"
+if [ -S "$SOCK" ]; then
+  sudo chown root:docker "$SOCK"
+  sudo chmod 660 "$SOCK"
+fi
+
 echo "Docker installed! Log out and back in for group changes to take effect."
 docker --version

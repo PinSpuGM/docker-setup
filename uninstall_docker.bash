@@ -44,8 +44,11 @@ sudo rm -f /etc/apt/keyrings/docker.gpg
 # Remove Docker CLI configuration from the current user's home directory
 rm -rf "$HOME/.docker"
 
-# Remove the docker group if it exists
+# Remove the current user from the docker group, then delete the group
 if getent group docker > /dev/null 2>&1; then
+  if id -nG "$USER" | grep -qw docker; then
+    sudo gpasswd -d "$USER" docker 2>/dev/null
+  fi
   sudo groupdel docker 2>/dev/null
 fi
 
